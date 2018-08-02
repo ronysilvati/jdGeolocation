@@ -24,7 +24,14 @@ class JdGeolocation{
         }
     }
 
-
+    /**
+     * @param $dsOrigin
+     * @param $dsDestination
+     * @param array $dsWayPoints
+     * @return array
+     * @throws \Exception
+     * Calculate the distance and time between origin, destination and waypoints (case exists)
+     */
     public function calcRoute($dsOrigin,$dsDestination,$dsWayPoints=[]){
         if($this->isValidPoint($dsOrigin) && $this->isValidPoint($dsDestination) && ((is_array($dsWayPoints) && (count($dsWayPoints) === 0)) || ($this->isValidWayPoints($dsWayPoints)))){
             $url = $this->getUrlDistanceMatrix()."&origin={$this->convertPointToString($dsOrigin)}";

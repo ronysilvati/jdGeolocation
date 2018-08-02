@@ -10,6 +10,8 @@
 
 declare(strict_types=1);
 
+require __DIR__.'/../src/JdGeolocation.class.php';
+
 use PHPUnit\Framework\TestCase;
 use GWSoft\JdGeolocation;
 
@@ -54,7 +56,7 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 3618,//Meters
-            'time'  => 727 // Seconds
+            'time'  => 746 // Seconds
         ],$geo->calcRoute($originPoint,$destionationPoint,$waypoints));
     }
 
@@ -75,7 +77,7 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 3042,//Meters
-            'time'  => 574 // Seconds
+            'time'  => 583 // Seconds
         ],$geo->calcRoute($originPoint,$destionationPoint));
     }
 
@@ -133,7 +135,7 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 12260,//Meters
-            'time'  => 1920 // Seconds
+            'time'  => 1969 // Seconds
         ],$geo->calcRoute($originPoint,$destionationPoint,$waypoints));
     }
 
