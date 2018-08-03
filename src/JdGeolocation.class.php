@@ -63,7 +63,8 @@ class JdGeolocation{
         $tratedData = [
             'status'    => 'BAD_DATA_RESPONSE_FROM_GOOGLE',
             'distance'  => 0,
-            'time'      => 0
+            'time'      => 0,
+            'overview_polyline' =>  null
         ];
 
         try{
@@ -79,6 +80,10 @@ class JdGeolocation{
                             $tratedData['distance'] += $leg['distance']['value'];
                             $tratedData['time'] += $leg['duration']['value'];
                         }
+                    }
+
+                    if(array_key_exists('overview_polyline',$routes) && is_array($routes['overview_polyline']) && array_key_exists('points',$routes['overview_polyline'])){
+                        $tratedData['overview_polyline']    = $routes['overview_polyline']['points'];
                     }
                 }
             }

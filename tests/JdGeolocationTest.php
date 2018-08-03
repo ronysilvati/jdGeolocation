@@ -18,7 +18,7 @@ use GWSoft\JdGeolocation;
 final class JdGeolocationTest extends TestCase{
 
     // Put here your google maps api key
-    private $googleApiKey = 'xyz';
+    private $googleApiKey = '';
 
     public function testIsValidPoint(){
 
@@ -56,7 +56,8 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 3618,//Meters
-            'time'  => 746 // Seconds
+            'time'  => 746,// Seconds
+            'overview_polyline'  =>  'zz}y@vycyEcDT`@l@dAxADCLE`BKpCS`G]~Ea@`AID}@JeDDgB`@?^AREt@{ArBwDxDkH[wAGY^IlAa@p@S_@cBScAw@yEuDhByC~AaBaDo@gAu@q@gC_Cy@w@g@m@Ui@Y[eDqDsBdBaAt@_@gASc@QMLe@DeACm@Uu@IGKCUUsA{@k@k@Se@K{@@i@Jq@Ze@VQTKrASzAQlBK^ZVZz@rAd@p@b@x@LHJPrBrCvCjE'
         ],$geo->calcRoute($originPoint,$destionationPoint,$waypoints));
     }
 
@@ -77,7 +78,8 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 3042,//Meters
-            'time'  => 583 // Seconds
+            'time'  => 583, // Seconds
+            'overview_polyline'  =>  'zz}y@vycyEcDT`@l@dAxADCLE`BKpCSfEWUgAq@aD_AmEm@iD_@yB_@iBOs@OFwElBgB{DuAkCASSe@GK@OTOdE}ADIDGg@eCe@gC`AOPKQ_@q@kAy@qAUc@AODOHIhD_C^o@Le@DeACm@Uu@IGKCUUsA{@k@k@Se@K{@@i@Jq@Ze@VQTKrASzAQlBK^ZVZz@rAd@p@b@x@LHJPrBrCvCjE'
         ],$geo->calcRoute($originPoint,$destionationPoint));
     }
 
@@ -104,7 +106,8 @@ final class JdGeolocationTest extends TestCase{
         $this->assertEquals([
             'status'    =>  'NOT_FOUND',
             'distance' => 0,//Meters
-            'time'  => 0 // Seconds
+            'time'  => 0,// Seconds
+            'overview_polyline' => null
         ],$geo->calcRoute($originPoint,$destionationPoint,$waypoints));
     }
 
@@ -132,11 +135,14 @@ final class JdGeolocationTest extends TestCase{
             ]
         ];
 
+
         $this->assertEquals([
             'status'    =>  'OK',
             'distance' => 12260,//Meters
-            'time'  => 1969 // Seconds
+            'time'  => 1969, // Seconds
+            'overview_polyline'    => 'zz}y@vycyEcDT`@l@dAxADCLE`BKpCS`G]~Ea@`AID}@JeDDgB`@?^AREt@{ArBwDxDkH[wAGY^IlAa@p@S_@cBScAw@yEuDhByC~AaBaDo@gAu@q@a@]ODc@JoCbA_ExAkBn@KAIE}@y@I@y@_@k@WOEIQQ]g@{@_BqC_@g@]GmAXiCr@IMUBiAEsEOwGSiFS_HEiFGuBRa@B}BX}APsC\kGv@mDh@cCXyKrAmCRwFn@_Gr@mFp@uBTqGz@_BVuAJuAJ_Ef@wDb@yGt@oIbAmAL{@Hk@eCgI`AgC\~@~BTb@|@Kl@KJd@T`Ap@pCVx@K~@dBnFx@~BhBxFiByFq@gBrAg@pBq@|FoBvB{@~B_@xAUTK`BkAtBqDdB_Ez@iC`AObDYrDi@xFu@|Dc@zGw@lFk@hEc@fD_@~Fq@pFo@rBc@j@GfAMpFm@d@I|ASd@@TDj@Vr@PPDlGFvBDh@@v@R`Cn@tBt@dDpAZJZLx@@~AAb@ApDEVEdBYlDe@hCa@`AOPKQ_@q@kAy@qAUc@AODOHIhD_C^o@Le@DeACm@Uu@IGKCUUsA{@k@k@Se@K{@@i@Jq@Ze@VQTKrASzAQlBK^ZVZz@rAd@p@b@x@LHJPrBrCvCjE'
         ],$geo->calcRoute($originPoint,$destionationPoint,$waypoints));
+
     }
 
     public function testIsValidWayPoints(){
